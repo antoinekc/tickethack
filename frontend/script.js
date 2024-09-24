@@ -5,32 +5,43 @@ function addToCart(tripId) {
   alert(`Voyage ${tripId} ajouté au panier`)
   }
 
-document.getElementById('search-form').addEventListener('submit', async (e) => { e.preventDefault();
-
-  const departure = document.querySelector('#departure').value;
-  const date = document.querySelector('#date').value;
-  const arrival = document.querySelector('#arrival').value;
-
-  const response = await fetch(`/trips/search?departure=${departure}&arrival=${arrival}`)
-  const result = await response.json();
-
-  const resultsDiv = document.getElementById('results');
-
-  resultsDiv.innerHTML = "";
-
-  if (response.ok) {
-    result.foundTrips.forEach( trip => {
-      const tripDiv = document.createElement('div');
-      tripDiv.className = "trip";
-      tripDiv.innerHTML = `
-      <p>${trip.departure} à ${trip.arrival} le ${new Date(trip.date).toLocaleDateString()} - $ ${trip.price}</p>
-      <button onclick="addToCart(${trip._id})"> Add to Cart</button>
-      `;
-      resultsDiv.appendChild(tripDiv)
-
-    });
-  } else { 
-    resultsDiv.innerHTML = `<p> ${result.message} </p>`;
+  document.getElementById('searchForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const departure = document.getElementById('departure').value;
+    const arrival = document.getElementById('arrival').value;
+    const date = document.getElementById('date').value;
+  
+    try {
+      const response = await fetch(`http://localhost:3000/trips/search?departure=${departure}&arrival=${arrival}&date=${date}`);
+      const result = await response.json();
+  
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = "";
+  
+      if (response.ok) {
+        result.foundTrips.forEach(trip => {
+          const tripDiv = document.createElement('div');
+          tripDiv.className = "trip";
+          tripDiv.innerHTML = `
+            <p>${trip.departure} to ${trip.arrival} on ${new Date(trip.date).toLocaleDateString()} - $${trip.price}</p>
+            <button class="add-to-cart-btn" data-trip-id="${trip._id}">Add to Cart</button>
+          `;
+          resultsDiv.appendChild(tripDiv);
+        });
+  
+        // Ajouter des écouteurs d'événements aux boutons "Add to Cart"
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+          button.addEventListener('click', function () {
+            const tripId = this.getAttribute('data-trip-id');
+            addToCart(tripId);
+          });
+        });
+      } else {
+        resultsDiv.innerHTML = `<p>${result.message}</p>`;
+      }
+    } catch (error) {
+      console.error('Error fetching trips:', error);
+      document.getElementById('results').innerHTML = `<p>Server error. Please try again later.</p>`;
     }
   });
 

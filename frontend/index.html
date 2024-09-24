@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tickethack - Train Booking</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tickethack - Train Booking</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-        <header>   
-            <div class="logo">
-                <h1>Tickethack</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Cart</a></li>
-                    <li><a href="#">Bookings</a></li>
-                </ul>
-            </nav>
-        </header>
+  <header>
+    <div class="logo">
+      <h1>Tickethack</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Cart</a></li>
+        <li><a href="#">Bookings</a></li>
+      </ul>
+    </nav>
+  </header>
 
-        <div class="container">
-            <div class="content">
-                <h1> Explore the world effortlessly by train! </h1>
-                <p> Compare, book and enjoy cheal prices for train tickets: your journey starts on Tickethack.</p>
-            </div>
-       
-       
+  <div class="container">
+    <div class="content">
+      <h1> Explore the world effortlessly by train! </h1>
+      <p> Compare, book and enjoy cheal prices for train tickets: your journey starts on Tickethack.</p>
+    </div>
 
-        <div class="search-section">
-            
-                <form class= "test search-form">
-                    <input type="text" placeholder="Departure" required>
-                    <input type="text" placeholder="Arrival" required>
-                    <input type="date" value="2022-06-23" required>
-                    <button type="submit">Search</button>
-            </form>
-          
 
-            <div class="test booking-message">
-                <img src="./images/train.png" alt="Train icon">
-                <p>It's time to book your future trip.</p>
-            </div>
-        </div>
-        
-        
+
+    <div class="search-section">
+
+      <form id="searchForm" class="test search-form">
+        <input type="text" id="departure" placeholder="Departure" required>
+        <input type="text" id="arrival" placeholder="Arrival" required>
+        <input type="date" id="date" value="2024-09-24" required>
+        <button type="submit">Search</button>
+      </form>
     
+      <div class="test booking-message">
+        <img src="./images/train.png" alt="Train icon">
+        <div id="results" class="results"></div>
+        <p>Time to book your future Trip ! </p>
+      </div>
+    
+    </div>
+
+
+    <script src='script.js'></script>
+
 </body>
+
 </html>
