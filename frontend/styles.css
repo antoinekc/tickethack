@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.logo h1 {
+    color:#21a366;
+    font-size: 1.8em;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.container {
+    background-image: url('./images/background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 850px; /* Espace pour la barre de navigation */
+}
+
+.content {
+    text-align: center;
+    color: white;
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+}
+/*  Ma section recherche entière */
+
+.search-section {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 150px;
+    margin-bottom: 500px;
+}
+
+
+
+
+.test {
+    display: flex;
+    gap: 250px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 300px;
+    width: 400px;
+    height: 500px;
+}
+
+/* la forme de mes rechcerches départ et arrivés*/
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+/* la forme des encadrés de mes recherches départs et arrivés */
+
+.search-form input, .search-form button {
+    padding: 10px;
+    font-size: 1em;
+    background-color:#EFF1F1;
+    border-radius: 5px;
+    gap: 30px;
+}
+/*  Mon bouton recherche*/
+
+.search-form button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-top: 200px;
+}
+/*  Ma section Booking*/
+
+.booking-message {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.booking-message img {
+    width: 100px;
+    margin-bottom: 10px;
+
+}
+
+.booking-message p {
+    font-size: 1.2em;
+}
