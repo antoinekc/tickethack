@@ -11,12 +11,13 @@
 <body>
   <header>
     <div class="logo">
-      <h1>Tickethack</h1>
+      <h1><a href="index.html">Tickethack</a></h1>
+
     </div>
     <nav>
       <ul>
-        <li><a href="#">Cart</a></li>
-        <li><a href="#">Bookings</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="booking.html">Bookings</a></li>
       </ul>
     </nav>
   </header>
@@ -35,13 +36,45 @@
         <input type="text" id="departure" placeholder="Departure" required>
         <input type="text" id="arrival" placeholder="Arrival" required>
         <input type="date" id="date" value="2024-09-24" required>
-        <button type="submit">Search</button>
+        <button type="submit" id="searchButton">Search</button>
       </form>
     
       <div class="test booking-message">
         <img src="./images/train.png" alt="Train icon">
-        <div id="results" class="results"></div>
         <p>Time to book your future Trip ! </p>
+        <div id="results" class="results"></div>
+        
+
+        <div id="trainList" class="train-list"></div>
+        <script>
+          document.getElementById('searchButton').addEventListener('click', function() {
+              fetch('/api/trains')
+                  .then(response => response.json())
+                  .then(data => {
+                      const trainList = document.getElementById('trainList');
+                      trainList.innerHTML = ''; 
+  
+                      data.forEach(train => {
+                          const trainItem = document.createElement('div');
+                          trainItem.className = 'train-item';
+  
+                          trainItem.innerHTML = `
+                              <span>${train.depart} > ${train.arrivee}</span>
+                              <span>${train.heure}</span>
+                              <span>${train.prix}€</span>
+                              <button class="book-button">Book</button>
+                          `;
+  
+                          trainList.appendChild(trainItem);
+                      });
+  
+                      trainList.style.display = 'block'; // Show the list
+                  })
+                  .catch(error => {
+                      console.error('Error fetching train data:', error);
+                  });
+          });
+      </script>
       </div>
     
     </div>

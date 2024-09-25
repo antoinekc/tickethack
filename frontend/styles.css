@@ -23,10 +23,19 @@ header {
 
 }
 
+/* Tickethack header style */
+
 .logo h1 {
     color:#21a366;
     font-size: 1.8em;
 }
+
+.logo h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Cart et booking header style */
 
 nav ul {
     list-style: none;
@@ -129,10 +138,91 @@ p {
 
 .booking-message img {
     width: 100px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 800px;
+    gap: 50px;
 
 }
 
 .booking-message p {
     font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 500px;
+    
+}
+
+.train-list {
+    margin-top: 20px;
+    display: none;
+}
+
+.train-item {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book-button {
+    padding: 5px 10px;
+    background-color: white;
+    color: blue;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-button:hover {
+    background-color: blue;
+}
+
+
+/* HTML Cart */
+
+body {
+    width: 100%;
+    background-color: #d3d3d3;
+}
+
+.background-cart {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 400px;
+    margin-left: 300px;
+    margin-right: 300px;    
+    
+}
+
+cart.p {
+    font-size: 1.2em;
+    padding: 20px;
+    justify-content: center;
+}
+
+
+/* HTML Booking */
+
+.background-booking {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 400px;
+    margin-left: 300px;
+    margin-right: 300px;  
+}
+
+p {
+    font-size: 1.2em;
+    padding: 20px;
+    justify-content: center;
 }
