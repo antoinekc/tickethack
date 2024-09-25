@@ -6,23 +6,6 @@ const Trip = require('../models/trips');
 
 const { capitalizeFirstLetter } = require('../modules/capitalizeFirstLetter');
 
-
-// Route pour rajouter un voyage
-router.post('/trips', (req, res) => {
-  const newTrip = new Trip({
-    departure: req.body.departure,
-    departure_date: req.body.departure_date,
-    arrival: req.body.arrival,
-  });
-
-  newTrip.save().then(() => {
-    Trip.find().then(data => {
-      res.json({ allTrips: data });
-    })
-  });
-});
-
-
 // Route pour afficher l'ensemble des trajets
 router.get('/', (req, res) => {
   Trip.find()
@@ -69,6 +52,20 @@ router.get('/search', (req, res) => {
   });
 });
 
+
+// Route pour rechercher par id
+router.get('/trips/:id', (req, res) => {
+  const tripId = req.params.id;
+
+  Trip.findById(tripId)
+  .then(trip => {
+    if(trip) {
+      res.json(trip);
+    } else {
+      res.status(404).json({ message : "Le voyage n'a pas été trouvé",});
+    }
+  });
+})
 
 // Route pour supprimer les trajets.
 router.delete('/trips', (req, res) => {
