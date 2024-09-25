@@ -54,18 +54,21 @@ router.get('/search', (req, res) => {
 
 
 // Route pour rechercher par id
-router.get('/trips/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const tripId = req.params.id;
 
   Trip.findById(tripId)
-  .then(trip => {
-    if(trip) {
-      res.json(trip);
-    } else {
-      res.status(404).json({ message : "Le voyage n'a pas été trouvé",});
-    }
-  });
-})
+    .then(trip => {
+      if (trip) {
+        res.json(trip);
+      } else {
+        res.status(404).json({ message: 'Trip not found' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ message: 'Error fetching trip', error: err });
+    });
+});
 
 // Route pour supprimer les trajets.
 router.delete('/trips', (req, res) => {
